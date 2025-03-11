@@ -15,10 +15,10 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    User.login(email, password, (err, user) => {
+    const { username, password } = req.body;
+    User.login(username, password, (err, user) => {
         if (err) {
-            res.status(401).send({ error: 'Invalid email or password' });
+            res.status(401).send({ error: 'Invalid username or password' });
         } else {
             res.status(200).send({ user });
         }
