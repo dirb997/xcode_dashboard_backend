@@ -25,4 +25,15 @@ router.post('/login', async (req, res) => {
     });
 });
 
+router.post('/delete', async (req, res) => {
+    const { userId } = req.body;
+    User.delete(userId, (err, user) => {
+        if (err) {
+            res.status(500).send({ error: 'Error deleting user' });
+        } else {
+            res.status(200).send({ user, message: 'User deleted successfully' });
+        }
+    });
+});
+
 module.exports = router;
